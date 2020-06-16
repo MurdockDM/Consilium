@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-const tokenAuth = () => {
+const TokenAuth = () => {
 
     const [loggedIn, setIsLoggedIn] = useState(false)
 
     const isAuthenticated = () =>
-        loggedIn || sessionStorage.getItem("ecommerce_token") !== null
+        loggedIn || sessionStorage.getItem("consilium_token") !== null
 
     const register = userInfo => {
         return fetch("http://127.0.0.1:8000/register/", {
@@ -19,7 +19,7 @@ const tokenAuth = () => {
             .then(res => res.json())
             .then(res => {
                 if ("token" in res) {
-                    sessionStorage.setItem( "ecommerce_token", res.token )
+                    sessionStorage.setItem( "consilium_token", res.token )
                     setIsLoggedIn(true)
                 }
             })
@@ -37,7 +37,7 @@ const tokenAuth = () => {
             .then(res => res.json())
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    sessionStorage.setItem( "ecommerce_token", res.token )
+                    sessionStorage.setItem( "consilium_token", res.token )
                     setIsLoggedIn(true)
                 }
             })
@@ -45,10 +45,10 @@ const tokenAuth = () => {
 
     const logout = () => {
         setIsLoggedIn(false)
-        sessionStorage.removeItem("ecommerce_token")
+        sessionStorage.removeItem("consilium_token")
     }
 
     return { isAuthenticated, logout, login, register }
 }
 
-export default tokenAuth
+export default TokenAuth
