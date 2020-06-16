@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { withRouter } from "react-router-dom"
-import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
+import TokenAuth from "../../hooks/TokenAuth"
 
 
 
@@ -13,7 +13,7 @@ const Register = props => {
     const home_city = useRef()
     const home_state = useRef()
     const verifyPassword = useRef()
-    const { register } = useSimpleAuth()
+    const { register } = TokenAuth()
 
     const handleRegister = (e) => {
         e.preventDefault()
