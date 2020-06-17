@@ -23,5 +23,13 @@ export default {
             }
         })
         .then(resp => resp.json())
+    },
+    deleteTrip(id) {
+        return fetch(`${url}/trips/${id}`, {
+            "method": "DELETE",
+            "headers": {
+                "Authorization": `Token ${token}`
+        }})
+
     }
 }
