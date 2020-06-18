@@ -37,7 +37,7 @@ const Flights = (props) => {
             </Container>
             <Container>
                 {allFlights.map((eachFlight) => {
-                    return eachFlight.traveler.possible_friend &&  (<FlightInfo key={eachFlight.id} eachFlight={eachFlight}  />)
+                    return eachFlight.traveler.possible_friend &&  (<FlightInfo key={eachFlight.id} eachFlight={eachFlight} {...props} />)
                 })}
             </Container>
         </>    
