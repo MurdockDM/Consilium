@@ -12,6 +12,9 @@ const NavBar = props => {
                 <li className="nav-item">
                     <Link className="nav-link" to="/">Home</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/flights">Flights</Link>
+                </li>
                 {
                     isAuthenticated() ?
                         <li className="nav-item">
