@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TokenAuth from "../../hooks/TokenAuth"
@@ -25,7 +25,7 @@ const Home = (props) => {
     const checkToken = sessionStorage.getItem("consilium_token")
 
     const loadTrips = () => {
-        TripManager.getAllTrips().then(response => setCurrentTrips(response))
+        TripManager.getTripsGeneral().then(response => setCurrentTrips(response))
         TravelerTripManager.getYourTrips().then(resp => setYourTrips(resp))  
     }
 

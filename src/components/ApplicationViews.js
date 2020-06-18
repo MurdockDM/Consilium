@@ -3,6 +3,7 @@ import React from "react"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
 import Home from "./Home/Home"
+import Flights from "./Flight/Flights"
 import TokenAuth from "../hooks/TokenAuth"
 
 const ApplicationViews = () => {
@@ -11,6 +12,10 @@ const ApplicationViews = () => {
         <>
             <Route exact path="/" render={props => {
                 return <Home isAuthenticated={TokenAuth.isAuthenticated} {...props} />
+            }}
+            />
+            <Route exact path="/flights" render={props => {
+                return <Flights isAuthenticated={TokenAuth.isAuthenticated} {...props} />
             }}
             />
             <Route exact path="/login" render={props => {
