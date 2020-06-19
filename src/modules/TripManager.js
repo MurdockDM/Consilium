@@ -24,4 +24,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    createNewTrip(Trip) {
+        return fetch(`${url}/trips`, {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Token ${token}`
+            },
+            body: JSON.stringify(Trip)
+        })
+        .then(resp => resp.json())
+    }
 }

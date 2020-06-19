@@ -31,5 +31,17 @@ export default {
                 "Authorization": `Token ${token}`
         }})
 
+    },
+    createNewTravelerTripOwner(TravelerTrip) {
+        return fetch(`${url}/travelertrips`, {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Token ${token}`
+            },
+            body: JSON.stringify(TravelerTrip)
+        })
+        .then(resp => resp.json())
     }
 }

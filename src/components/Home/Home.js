@@ -19,7 +19,9 @@ const Home = (props) => {
     const [yourTrips , setYourTrips] = useState([])
 
     const handleDeleteTrip = (id) => {
-        TravelerTripManager.deleteTrip(id).then(resp => {TravelerTripManager.getYourTrips().then(resp => setYourTrips(resp))})
+        TravelerTripManager.deleteTrip(id).then(()=> {
+            TravelerTripManager.getYourTrips().then(resp => setYourTrips(resp))
+            TripManager.getTripsGeneral().then(response => setCurrentTrips(response))})
     }
 
     const checkToken = sessionStorage.getItem("consilium_token")
@@ -43,7 +45,7 @@ const Home = (props) => {
                     <Container>
                         <h1>Consilium</h1>
                         <p>Plan out your next trip</p>
-                        <Button>Create Trip</Button>
+                        <Link to="/createtrip"><Button>Create Trip</Button></Link>
                     </Container>
                 </Jumbotron>
                 <Container>

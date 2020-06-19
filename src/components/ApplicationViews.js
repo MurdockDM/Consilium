@@ -5,6 +5,7 @@ import Register from "./auth/Register"
 import Home from "./Home/Home"
 import Flights from "./Flight/Flights"
 import ActivitiesPage from "./Activity/ActivitiesPage"
+import CreateTripForm from "./Trip/CreateTripForm"
 import AccommodationsPage from "./Accommodation/AccommodationsPage"
 import TokenAuth from "../hooks/TokenAuth"
 
@@ -26,6 +27,10 @@ const ApplicationViews = () => {
             />
             <Route exact path="/activities" render={props => {
                 return <ActivitiesPage isAuthenticated={TokenAuth.isAuthenticated} {...props} />
+            }}
+            />
+            <Route exact path="/createtrip" render={props => {
+                return <CreateTripForm isAuthenticated={TokenAuth.isAuthenticated} {...props} />
             }}
             />
             <Route exact path="/login" render={props => {
