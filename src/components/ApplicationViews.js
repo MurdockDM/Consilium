@@ -4,6 +4,7 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import Home from "./Home/Home"
 import Flights from "./Flight/Flights"
+import ActivitiesPage from "./Activity/ActivitiesPage"
 import AccommodationsPage from "./Accommodation/AccommodationsPage"
 import TokenAuth from "../hooks/TokenAuth"
 
@@ -21,6 +22,10 @@ const ApplicationViews = () => {
             />
             <Route exact path="/accommodations" render={props => {
                 return <AccommodationsPage isAuthenticated={TokenAuth.isAuthenticated} {...props} />
+            }}
+            />
+            <Route exact path="/activities" render={props => {
+                return <ActivitiesPage isAuthenticated={TokenAuth.isAuthenticated} {...props} />
             }}
             />
             <Route exact path="/login" render={props => {
