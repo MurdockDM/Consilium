@@ -4,17 +4,8 @@ import Button from 'react-bootstrap/Button'
 
 const YourTripHome = (props) => {
     
-    const [tripId, setTripId ] = useState(0)
+    const [tripId, setTripId ] = useState(props.eachTravelerTrip.trip_id)
 
-    const findTripId = () => {
-        const foundId = parseInt(props.eachTravelerTrip.trip.url.slice(-1))
-        setTripId(foundId)
-    }
-    
-    useEffect(() => {
-        findTripId()
-    },[])
-    
 
     return (
         <>
