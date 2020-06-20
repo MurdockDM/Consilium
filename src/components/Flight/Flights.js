@@ -31,7 +31,7 @@ const Flights = (props) => {
                 <Jumbotron>
                     <Container>
                         <h2>Flights by trip</h2>
-                        <Button>Add a Flight</Button>
+                        <Link to="/createflight"><Button>Add a Flight</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>
