@@ -15,4 +15,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    createNewFlight(Flight) {
+        return fetch(`${url}/flights`, {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Token ${token}`
+            },
+            body: JSON.stringify(Flight)
+        })
+        .then(resp => resp.json())
+    }
 }
