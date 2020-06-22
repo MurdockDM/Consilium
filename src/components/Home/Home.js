@@ -17,6 +17,17 @@ const Home = (props) => {
 
     const [currentTrips, setCurrentTrips] = useState([])
     const [yourTrips , setYourTrips] = useState([])
+    const [newTripJoinInfo, setNewTripJoinInfo] = useState({created_trip: false, trip_id: 0})
+
+
+    const buildNewTravelerTrip = () => {
+        const stateToChange = {...newTripJoinInfo}
+        stateToChange.trip_id = parseInt(props.eachTravelerTrip.id)
+        setNewTripJoinInfo(stateToChange)
+        TravelerTripManager.createNewTravelerTripOwner()
+
+    }
+    
 
     const handleDeleteTrip = (id) => {
         TravelerTripManager.deleteTrip(id).then(()=> {

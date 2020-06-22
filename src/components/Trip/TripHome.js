@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react"
 import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
 import Container from "react-bootstrap/Container"
+import TravelerTripManager from "../../modules/TravelerTripManager"
 
 const TripHome = props => {
 
-    const [tripAttendees, setTripAttendees] = useState([])
+    
 
     const eachTrip = props.eachTravelerTrip
     
-    // useEffect(() => {
-    //     setTripAttendees(props.eachTravelerTrip.traveler.user)
-    // })
+    
 
     return(
         <Container>
@@ -33,7 +33,7 @@ const TripHome = props => {
                     </Row>    
             )})
             }
-            
+
         </Container>    
     )
 }
