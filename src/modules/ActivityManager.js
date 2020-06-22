@@ -25,4 +25,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    createNewActivity(Activity) {
+        return fetch(`${url}/activities`, {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Token ${token}`
+            },
+            body: JSON.stringify(Activity)
+        })
+        .then(resp => resp.json())
+    }
 }
