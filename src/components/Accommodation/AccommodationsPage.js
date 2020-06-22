@@ -10,6 +10,7 @@ import AccommodationInfo from "./AccommodationInfo"
 import AccommodationManager from "../../modules/AccommodationManager"
 
 
+
 const AccommodationsPage = (props) => {
 
     const [allAccommodations , setAllAccommodations] = useState([])
@@ -32,7 +33,7 @@ const AccommodationsPage = (props) => {
                 <Jumbotron>
                     <Container>
                         <h2>Accommodations by Trip</h2>
-                        <Button>Add an accommodation</Button>
+                        <Link to="/createaccommodation"><Button>Add an accommodation</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>
