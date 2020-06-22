@@ -8,7 +8,7 @@ export default {
             "method": "GET",
             "headers": {
                 "Accept": "application/json",
-                "Authorization": `Token ${token}`
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
             }
         })
         .then(resp => resp.json())
@@ -19,7 +19,7 @@ export default {
             "headers": {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": `Token ${token}`
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
             },
             body: JSON.stringify(Accommodation)
         })

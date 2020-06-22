@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import TokenAuth from "../../hooks/TokenAuth"
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import FlightManager from "../../modules/FlightManager"
 import FlightInfo from "./FlightInfo"

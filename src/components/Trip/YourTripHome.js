@@ -6,7 +6,11 @@ const YourTripHome = (props) => {
     
     const [tripId, setTripId ] = useState(props.eachTravelerTrip.trip_id)
 
+    const initialTripInfoSet =
 
+    useEffect(() => {
+
+    })
     return (
         <>
             <Row>
