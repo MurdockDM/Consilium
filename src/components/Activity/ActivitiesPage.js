@@ -37,8 +37,8 @@ const ActivitiesPage = props => {
             <Container>
                 <Jumbotron>
                     <Container>
-                        <h2>Activites by Trip</h2>
-                        <Button>Add an Activity</Button>
+                        <h2>Activities by Trip</h2>
+                        <Link to="/createactivity"><Button>Add an Activity</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>
