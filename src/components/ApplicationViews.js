@@ -11,6 +11,7 @@ import EditFlight from "./Flight/EditFlight"
 import CreateAccommodation from "./Accommodation/CreateAccommodation"
 import AccommodationsPage from "./Accommodation/AccommodationsPage"
 import CreateActivity from "./Activity/CreateActivity"
+import EditActivity from "./Activity/EditActivity"
 import TokenAuth from "../hooks/TokenAuth"
 
 
@@ -52,6 +53,10 @@ const ApplicationViews = () => {
             />
             <Route exact path="/createactivity" render={props => {
                 return <CreateActivity isAuthenticated={TokenAuth.isAuthenticated} {...props} />
+            }}
+            />
+            <Route path="/:activityId/editactivity" render={props => {
+                return <EditActivity activityId={props.match.params.activityId} isAuthenticated={TokenAuth.isAuthenticated} {...props} />
             }}
             />
             <Route exact path="/login" render={props => {

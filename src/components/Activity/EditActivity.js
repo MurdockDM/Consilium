@@ -12,14 +12,14 @@ import ActivityManager from "../../modules/ActivityManager"
 import TripManager from "../../modules/TripManager"
 
 
-const CreateActivity = (props) => {
+const EditActivity = (props) => {
 
-    const [activityInfo, setActivityInfo] = useState({name: "", address: "", city:"", state:"", trip_id: 0})
+    const [activityInfo, setActivityInfo] = useState({id: 0, name: "", address: "", city:"", state:"", trip_id: 0})
     const [tripOptions, setTripOptions] = useState([])
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        ActivityManager.createNewActivity(activityInfo).then(() => props.history.push("/activities"))
+        ActivityManager.updateActivity(activityInfo).then(() => props.history.push("/activities"))
     }
 
     const handleFocusSelect = (event) => {
@@ -35,6 +35,7 @@ const CreateActivity = (props) => {
     }
     
     useEffect(() => {
+        ActivityManager.getIndividualActivity(props.activityId).then(resp => setActivityInfo(resp))
         TripManager.getTripsJoined().then(resp => setTripOptions(resp))
     },[])
 
@@ -42,14 +43,14 @@ const CreateActivity = (props) => {
     <Container>
         <Jumbotron>
             <Container>
-                <h2>Create an Activity</h2>
+                <h2>Edit an Activity</h2>
             </Container>
         </Jumbotron>
         <Container>
             <Form onSubmit={handleSubmit} >
             <FormGroup controlId="name">
                     <FormLabel>Name or Description</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={activityInfo.name} type="text" onChange={handleChange} />
                     <FormText className='text-muted'>
                         Use a name or description that best describes the activity
                     </FormText>
@@ -57,17 +58,17 @@ const CreateActivity = (props) => {
 
                 <FormGroup controlId="address">
                     <FormLabel>Address</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={activityInfo.address} type="text" onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup controlId="city">
                     <FormLabel>City</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={activityInfo.city} type="text" onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup controlId="state">
                     <FormLabel>State</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={activityInfo.state} type="text" onChange={handleChange} />
                     <FormText className='text-muted'>
                         Use the full state, province, region name.
                     </FormText>
@@ -75,7 +76,7 @@ const CreateActivity = (props) => {
 
                 <FormGroup controlId="trip_id">
                     <FormLabel>Trip</FormLabel>
-                    <FormControl as="select" onChange={handleFocusSelect} >
+                    <FormControl as="select" value={activityInfo.trip_id} onChange={handleFocusSelect} >
                         <option>Pick one</option>
                         {tripOptions.map((eachTrip) => (
                             <TripDropdownOptions key={eachTrip.id} value={eachTrip.id} eachTrip={eachTrip} {...props} />
@@ -93,4 +94,4 @@ const CreateActivity = (props) => {
     )
 }
 
-export default CreateActivity
+export default EditActivity
