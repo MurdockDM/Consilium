@@ -55,4 +55,12 @@ export default {
             body: JSON.stringify(accommodation)
         })
     },
+    deleteAccommodation(id) {
+        return fetch(`${url}/accommodations/${id}`, {
+            "method": "DELETE",
+            "headers": {
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+        }})
+
+    },
 }

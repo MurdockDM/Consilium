@@ -25,6 +25,14 @@ const AccommodationsPage = (props) => {
         })
     }
 
+    const handleDelete = (id) => {
+        AccommodationManager.deleteAccommodation(id).then(() => {
+            AccommodationManager.getYourAccommodations().then(resp => {
+                setYourAccommodations(resp)
+            })
+        })
+    } 
+
     useEffect(() => {
         getAllAccommodations()
     },[])
@@ -50,7 +58,7 @@ const AccommodationsPage = (props) => {
                 <Container>
                 <h3>Your Accommodations</h3>
                 {yourAccommodations.map((eachAccommodation) => (
-                    <YourAccommodationInfo key={eachAccommodation.id} eachAccommodation={eachAccommodation} {...props} />
+                    <YourAccommodationInfo key={eachAccommodation.id} handleDelete={handleDelete} eachAccommodation={eachAccommodation} {...props} />
                 ))
                 }
                 </Container>

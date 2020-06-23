@@ -47,7 +47,7 @@ const YourAccommodationInfo = props => {
                 </Row>
                 <Row>
                     <Button onClick={() => handleEdit(accommodationIdentifier)}>Edit Activity</Button>
-                    <Button variant="danger">Delete Activity</Button>
+                    <Button onClick={() => props.handleDelete(eachAccommodation.id)} variant="danger">Delete Activity</Button>
                 </Row>
             </Container>
     )
