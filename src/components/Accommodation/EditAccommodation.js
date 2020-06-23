@@ -17,16 +17,16 @@ import RoomManager from "../../modules/RoomManager";
 
 
 
-const CreateAccommodation = props => {
+const EditAccommodation = props => {
     
-    const [accommodationInfo, setAccommodationInfo] = useState({ name: "", address: "", city: "", state: "", checkin_date: "", checkout_date: "", capacity: 8, booked: false, room_id: null, trip_id: 0 })
+    const [accommodationInfo, setAccommodationInfo] = useState({id: 0, name: "", address: "", city: "", state: "", checkin_date: "", checkout_date: "", capacity: 8, booked: false, room_id: null, trip_id: 0 })
     const [tripOptions, setTripOptions] = useState([])
-    const [room, setRoom] = useState({room_number: 0})
+    const [room, setRoom] = useState({id: 0, room_number: 0})
     const [show, setShow] = useState(false);
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        AccommodationManager.createNewAccommodation(accommodationInfo).then(() => props.history.push("/accommodations"))
+        AccommodationManager.updateAccommodation(accommodationInfo).then(() => props.history.push("/accommodations"))
     }
 
 
@@ -64,8 +64,8 @@ const CreateAccommodation = props => {
 
     const handleRoomBooking = () => {
         const stateToChange = {...accommodationInfo}
-        RoomManager.createNewRoom(room).then(resp => {
-            stateToChange.room_id = parseInt(resp.id)
+        RoomManager.updateRoom(room).then(() => {
+            stateToChange.room_id = parseInt(room.id)
             setAccommodationInfo(stateToChange)
         }).then(handleClose())
     }
@@ -73,7 +73,13 @@ const CreateAccommodation = props => {
 
     useEffect(() => {
         TripManager.getAllTrips().then(resp => setTripOptions(resp))
+        AccommodationManager.getIndividualAccommodation(props.accommodationId).then(resp => {setAccommodationInfo(resp)})
     }, [])
+
+    useEffect(() => {
+        if (accommodationInfo.id !== 0) {
+        RoomManager.getIndividualRoom(accommodationInfo.room_id).then(resp => setRoom(resp))}
+    },[accommodationInfo])
 
     return (
 
@@ -86,7 +92,7 @@ const CreateAccommodation = props => {
             <Form onSubmit={handleSubmit} >
                 <FormGroup controlId="name">
                     <FormLabel>Name of Accommodation</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} placeholder="Hotel, AirBNB, VRBO, etc" />
+                    <FormControl required value={accommodationInfo.name} type="text" onChange={handleChange} placeholder="Hotel, AirBNB, VRBO, etc" />
                     <FormText className='text-muted'>
                         Use the name of the accommodation or best description
                     </FormText>
@@ -94,17 +100,17 @@ const CreateAccommodation = props => {
 
                 <FormGroup controlId="address">
                     <FormLabel>Address</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={accommodationInfo.address} type="text" onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup controlId="city">
                     <FormLabel>City</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={accommodationInfo.city} type="text" onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup controlId="state">
                     <FormLabel>State</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} />
+                    <FormControl required value={accommodationInfo.state} type="text" onChange={handleChange} />
                     <FormText className='text-muted'>
                         Use the full state, province, region name.
                     </FormText>
@@ -112,12 +118,12 @@ const CreateAccommodation = props => {
 
                 <FormGroup controlId="checkin_date">
                     <FormLabel>Check in date</FormLabel>
-                    <FormControl required type="date" onChange={handleChange} />
+                    <FormControl required value={accommodationInfo.checkin_date} type="date" onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup controlId="checkout_date">
                     <FormLabel>Checkout date</FormLabel>
-                    <FormControl required type="date" min={accommodationInfo.checkin_date} onChange={handleChange} />
+                    <FormControl required value={accommodationInfo.checkout_date} type="date" min={accommodationInfo.checkin_date} onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup>
@@ -127,13 +133,14 @@ const CreateAccommodation = props => {
                         id='booked'
                         name='booked'
                         label='Room booked'
+                        value={accommodationInfo.booked}
                     />
                 </FormGroup>
                 {
                     accommodationInfo.booked
                     ?<>   
                         <Button variant="outline-success" onClick={handleShow}>
-                            Add a room
+                            Edit a room
                         </Button>
                         
                     </>    
@@ -149,7 +156,7 @@ const CreateAccommodation = props => {
                                 <FormLabel>
                                     Room Number
                                 </FormLabel>
-                                <FormControl required type='text' onChange={handleRoomChange} />
+                                <FormControl required value={room.room_number} type='text' onChange={handleRoomChange} />
                             </FormGroup>
                         </Form>
                     </Modal.Body>
@@ -164,11 +171,11 @@ const CreateAccommodation = props => {
                 </Modal>
                 <FormGroup controlId="capacity">
                     <FormLabel>Capacity: {accommodationInfo.capacity} </FormLabel>
-                    <FormControl onChange={handleRangeChange} placeholder={0} min={0} max={16} type="range" />
+                    <FormControl onChange={handleRangeChange} value={accommodationInfo.capacity} placeholder={0} min={0} max={16} type="range" />
                 </FormGroup>
                 <FormGroup controlId="trip_id">
                     <FormLabel>Trip</FormLabel>
-                    <FormControl as="select" onChange={handleFocusSelect} >
+                    <FormControl as="select" value={accommodationInfo.trip_id} onChange={handleFocusSelect} >
                         <option>Pick one</option>
                         {tripOptions.map((eachTrip) => (
                             <TripDropdownOptions key={eachTrip.id} value={eachTrip.id} eachTrip={eachTrip} {...props} />
@@ -185,4 +192,4 @@ const CreateAccommodation = props => {
 
 }
 
-export default CreateAccommodation
+export default EditAccommodation
