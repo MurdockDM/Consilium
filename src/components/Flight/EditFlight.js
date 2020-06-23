@@ -20,7 +20,7 @@ const EditFlight = props => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        FlightManager.createNewFlight(flightInfo).then(() => props.history.push("/flights"))
+        FlightManager.updateFlight(flightInfo).then(() => {props.history.push("/flights")})
     }
 
 

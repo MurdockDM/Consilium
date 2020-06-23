@@ -4,13 +4,11 @@ import Button from 'react-bootstrap/Button'
 
 const YourTripHome = (props) => {
     
-    const [tripId, setTripId ] = useState(props.eachTravelerTrip.trip_id)
-
-    const initialTripInfoSet =
+    const [tripId, setTripId ] = useState(0)
 
     useEffect(() => {
-
-    })
+        setTripId(props.eachTravelerTrip.trip_id)
+    },[])
     return (
         <>
             <Row>

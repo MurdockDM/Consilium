@@ -15,6 +15,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    getYourFlights(){
+        return fetch(`${url}/flights?yourflights`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
     getIndividualFlight(id){
         return fetch(`${url}/flights/${id}`, {
             "method": "GET",
@@ -39,14 +49,20 @@ export default {
     },
     updateFlight(Flight) {
         return fetch(`${url}/flights/${Flight.id}`, {
-            "method": "POST",
+            "method": "PUT",
             "headers": {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
                 "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
             },
             body: JSON.stringify(Flight)
         })
-        .then(resp => resp.json())
-    }
+    },
+    deleteFlight(id) {
+        return fetch(`${url}/flights/${id}`, {
+            "method": "DELETE",
+            "headers": {
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+        }})
+
+    },
 }
