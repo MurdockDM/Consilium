@@ -31,7 +31,7 @@ const YourActivityInfo = props => {
             </Row>
             <Row>
                 <Button onClick={() => handleEdit(activityIdentifier)}>Edit Activity</Button>
-                <Button variant="danger">Delete Activity</Button>
+                <Button onClick={() => props.handleDelete(eachActivity.id)} variant="danger">Delete Activity</Button>
             </Row>
         </Container>
     )

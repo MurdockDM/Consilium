@@ -56,5 +56,13 @@ export default {
             body: JSON.stringify(Activity)
         })
         .then(resp => resp.json())
-    }
+    },
+    deleteActivity(id) {
+        return fetch(`${url}/activities/${id}`, {
+            "method": "DELETE",
+            "headers": {
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+        }})
+
+    },
 }
