@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import AccommodationInfo from "./AccommodationInfo"
+import YourAccommodationInfo from "./YourAccommodationInfo"
 import AccommodationManager from "../../modules/AccommodationManager"
 
 
@@ -12,11 +13,15 @@ import AccommodationManager from "../../modules/AccommodationManager"
 const AccommodationsPage = (props) => {
 
     const [allAccommodations , setAllAccommodations] = useState([])
+    const [yourAccommodations, setYourAccommodations] = useState([])
 
 
     const getAllAccommodations = () => {
         AccommodationManager.getAllAccommodations().then(response => {
             setAllAccommodations(response)
+        })
+        AccommodationManager.getYourAccommodations().then(resp => {
+            setYourAccommodations(resp)
         })
     }
 
@@ -36,12 +41,20 @@ const AccommodationsPage = (props) => {
                 </Jumbotron>
             </Container>
             <Container>
-                {allAccommodations.map((eachAccommodation) => (
-                    <AccommodationInfo key={eachAccommodation.id} eachAccommodation={eachAccommodation} {...props} />
+                <Container>
+                    {allAccommodations.map((eachAccommodation) => (
+                        <AccommodationInfo key={eachAccommodation.id} eachAccommodation={eachAccommodation} {...props} />
+                    ))
+                    }
+                </Container>
+                <Container>
+                <h3>Your Accommodations</h3>
+                {yourAccommodations.map((eachAccommodation) => (
+                    <YourAccommodationInfo key={eachAccommodation.id} eachAccommodation={eachAccommodation} {...props} />
                 ))
-
                 }
-            </Container>
+                </Container>
+            </Container>    
         </>
     )
 

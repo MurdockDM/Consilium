@@ -26,5 +26,25 @@ export default {
             body: JSON.stringify(Room)
         })
         .then(resp => resp.json())
-    }
+    },
+    getIndividualRoom(id){
+        return fetch(`${url}/rooms/${id}`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
+    updateRoom(room) {
+        return fetch(`${url}/rooms/${room.id}`, {
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            },
+            body: JSON.stringify(room)
+        })
+    },
 }

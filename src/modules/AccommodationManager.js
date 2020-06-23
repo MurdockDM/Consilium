@@ -13,6 +13,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    getYourAccommodations(){
+        return fetch(`${url}/accommodations?youraccommodations`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
     createNewAccommodation(Accommodation) {
         return fetch(`${url}/accommodations`, {
             "method": "POST",
@@ -24,5 +34,25 @@ export default {
             body: JSON.stringify(Accommodation)
         })
         .then(resp => resp.json())
-    }
+    },
+    getIndividualAccommodation(id){
+        return fetch(`${url}/accommodations/${id}`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
+    updateAccommodation(accommodation) {
+        return fetch(`${url}/accommodations/${accommodation.id}`, {
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            },
+            body: JSON.stringify(accommodation)
+        })
+    },
 }
