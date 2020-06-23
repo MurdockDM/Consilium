@@ -6,7 +6,16 @@ import Button from 'react-bootstrap/Button'
 
 const YourActivityInfo = props => {
 
+    const [activityIdentifier, setActivityIdentifier] = useState(0)
     const eachActivity = props.eachActivity
+
+    const handleEdit = (id) => {
+        props.history.push(`/${id}/editactivity`)
+    }
+
+    useEffect(() => {
+        setActivityIdentifier(props.eachActivity.id)
+    })
 
     return (
 
@@ -21,7 +30,7 @@ const YourActivityInfo = props => {
                 <p>Address: {eachActivity.address} {eachActivity.city} {eachActivity.state}</p>
             </Row>
             <Row>
-                <Button>Edit Activity</Button>
+                <Button onClick={() => handleEdit(activityIdentifier)}>Edit Activity</Button>
                 <Button variant="danger">Delete Activity</Button>
             </Row>
         </Container>

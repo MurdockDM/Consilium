@@ -25,6 +25,26 @@ export default {
         })
         .then(resp => resp.json())
     },
+    getIndividualActivity(id){
+        return fetch(`${url}/activities/${id}`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
+    updateActivity(Activity) {
+        return fetch(`${url}/activities/${Activity.id}`, {
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            },
+            body: JSON.stringify(Activity)
+        })
+    },
     createNewActivity(Activity) {
         return fetch(`${url}/activities`, {
             "method": "POST",
