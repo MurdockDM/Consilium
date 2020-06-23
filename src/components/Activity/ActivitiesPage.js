@@ -26,6 +26,14 @@ const ActivitiesPage = props => {
         })
     }
 
+    const handleDelete = (id) => {
+        ActivityManager.deleteActivity(id).then(() => {
+            ActivityManager.getYourActivities().then(resp => {
+                setYourActivities(resp)
+            })
+        })
+    }
+
     useEffect(() => {
         getAllActivities()
         getAllYourActivities()
@@ -53,7 +61,7 @@ const ActivitiesPage = props => {
                     <h2>Edit or Delete your activities</h2>
                 </Row>
                 {yourActivities.map((eachActivity) => (
-                    <YourActivityInfo key={eachActivity.id} eachActivity={eachActivity} {...props} />
+                    <YourActivityInfo key={eachActivity.id} handleDelete={handleDelete} eachActivity={eachActivity} {...props} />
                 ))
 
                 }
