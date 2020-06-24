@@ -14,6 +14,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    getAllTripsAttending() {
+        return fetch(`${url}/trips?tripsjoinedandyours`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
     getTripsNotOn() {
         return fetch(`${url}/trips?notyourtrips`, {
             "method": "GET",
@@ -65,5 +75,25 @@ export default {
             }
         })
         .then(resp => resp.json())
+    },
+    getIndividualTrip(id){
+        return fetch(`${url}/trips/${id}`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
+    updateTrip(trip) {
+        return fetch(`${url}/trips/${trip.id}`, {
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            },
+            body: JSON.stringify(trip)
+        })
     },
 }

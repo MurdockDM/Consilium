@@ -72,7 +72,7 @@ const CreateAccommodation = props => {
 
 
     useEffect(() => {
-        TripManager.getAllTrips().then(resp => setTripOptions(resp))
+        TripManager.getTripsJoined().then(resp => setTripOptions(resp))
     }, [])
 
     return (

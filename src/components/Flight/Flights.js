@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import FlightManager from "../../modules/FlightManager"
 import FlightInfo from "./FlightInfo"
 import PersonalFlightInfo from "./PersonalFlightInfo"
+import "./Flights.css"
 
 const Flights = (props) => {
 
@@ -46,7 +47,7 @@ const Flights = (props) => {
                     </Container>
                 </Jumbotron>
             </Container>
-            <Container>    
+            <Container className="everyFlightBox">    
                 <Container>
                     <h4>All Flights</h4>
                     {allFlights.map((eachFlight) => {

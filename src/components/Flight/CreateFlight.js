@@ -38,7 +38,7 @@ const CreateFlight = props => {
 
 
     useEffect(() => {
-        TripManager.getTripsNotOn().then(resp => setTripOptions(resp))
+        TripManager.getTripsJoined().then(resp => setTripOptions(resp))
     },[])
 
     return(

@@ -1,0 +1,5 @@
+
+.everyAccommodationBox {
+    display: flex;
+    flex-direction: row;
+}

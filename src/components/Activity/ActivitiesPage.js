@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import ActivityManager from "../../modules/ActivityManager"
 import ActivityInfo from "./ActivityInfo"
 import YourActivityInfo from "./YourActivityInfo"
+import "./ActivitiesPage.css"
 
 const ActivitiesPage = props => {
 
@@ -31,6 +32,9 @@ const ActivitiesPage = props => {
             ActivityManager.getYourActivities().then(resp => {
                 setYourActivities(resp)
             })
+            ActivityManager.getAllActivities().then(resp => {
+                setAllActivities(resp)
+            })
         })
     }
 
@@ -49,23 +53,24 @@ const ActivitiesPage = props => {
                     </Container>
                 </Jumbotron>
             </Container>
-            <Container>
-                {allActivities.map((eachActivity) => (
-                    <ActivityInfo key={eachActivity.id} eachActivity={eachActivity} {...props} />
-                ))
+            <Container className="everyActivityBox">
+                <Container>
+                    <h3>All Activities</h3>
+                    {allActivities.map((eachActivity) => (
+                        <ActivityInfo key={eachActivity.id} eachActivity={eachActivity} {...props} />
+                    ))
 
-                }
-            </Container>
-            <Container>
-                <Row>
-                    <h2>Edit or Delete your activities</h2>
-                </Row>
-                {yourActivities.map((eachActivity) => (
-                    <YourActivityInfo key={eachActivity.id} handleDelete={handleDelete} eachActivity={eachActivity} {...props} />
-                ))
+                    }
+                </Container>
+                <Container>
+                    <h3>Your created Activities</h3>
+                    {yourActivities.map((eachActivity) => (
+                        <YourActivityInfo key={eachActivity.id} handleDelete={handleDelete} eachActivity={eachActivity} {...props} />
+                    ))
 
-                }
-            </Container>
+                    }
+                </Container>
+            </Container>    
         </>
 
     )

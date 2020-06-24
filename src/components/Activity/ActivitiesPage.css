@@ -1,0 +1,5 @@
+
+.everyActivityBox {
+    display: flex;
+    flex-direction: row;
+}

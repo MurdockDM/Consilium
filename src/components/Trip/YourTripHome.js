@@ -6,6 +6,10 @@ const YourTripHome = (props) => {
     
     const [tripId, setTripId ] = useState(0)
 
+    const handleEdit = (id) => {
+        props.history.push(`/${id}/edittrip`)
+    }
+
     useEffect(() => {
         setTripId(props.eachTravelerTrip.trip_id)
     },[])
@@ -15,7 +19,7 @@ const YourTripHome = (props) => {
                 <h2>{props.eachTravelerTrip.trip.city} Trip</h2>
             </Row>
             <Row>
-                <Button variant="primary">Edit Trip</Button>
+                <Button onClick={() => handleEdit(props.eachTravelerTrip.trip_id)} variant="primary">Edit Trip</Button>
                 <Button onClick={() => props.handleDeleteTrip(tripId)} variant="danger">Delete Trip</Button>
             </Row>    
         </>

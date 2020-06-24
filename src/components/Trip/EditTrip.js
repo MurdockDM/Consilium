@@ -18,10 +18,7 @@ const EditTrip = props => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        TripManager.updateTrip(tripInfo).then(resp => {
-            const ownerTravelerTrip = {created_trip: true, trip_id: parseInt(resp.id)}
-            return TravelerTripManager.createNewTravelerTripOwner(ownerTravelerTrip)
-        }).then(() => props.history.push("/"))
+        TripManager.updateTrip(tripInfo).then(() => props.history.push("/"))
     }
 
     const handleChange = evt => {
@@ -32,7 +29,7 @@ const EditTrip = props => {
 
 
     useEffect(() => {
-
+        TripManager.getIndividualTrip(props.tripId).then(resp => setTripInfo(resp))
     },[])
 
     return(
@@ -40,13 +37,13 @@ const EditTrip = props => {
         <Container>
             <Jumbotron>
                 <Container>
-                    <h2>Create a Trip</h2>
+                    <h2>Edit the {tripInfo.city} Trip</h2>
                 </Container>
             </Jumbotron>
             <Form onSubmit={handleSubmit} >
                 <FormGroup controlId="city">
                     <FormLabel>City</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} placeholder="Destination City" />
+                    <FormControl required type="text" value={tripInfo.city} onChange={handleChange} placeholder="Destination City" />
                     <FormText className='text-muted'>
                         It's best to pick the starting point for the trip if it is not the only one.
                     </FormText>
@@ -54,7 +51,7 @@ const EditTrip = props => {
                 
                 <FormGroup controlId="state">
                     <FormLabel>State/Province/Region</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} placeholder="Destination State" />
+                    <FormControl required type="text" value={tripInfo.state} onChange={handleChange} placeholder="Destination State" />
                     <FormText className='text-muted'>
                         State where the city above is located.
                     </FormText>
@@ -62,12 +59,12 @@ const EditTrip = props => {
                 
                 <FormGroup controlId="country">
                     <FormLabel>Country</FormLabel>
-                    <FormControl required type="text" onChange={handleChange} placeholder="Destination Country" />
+                    <FormControl required value={tripInfo.country} type="text" onChange={handleChange} placeholder="Destination Country" />
                 </FormGroup>
 
                 <FormGroup controlId="start_date">
                     <FormLabel>Start Date of Trip</FormLabel>
-                    <FormControl required type="date" onChange={handleChange}/>
+                    <FormControl required value={tripInfo.start_date} type="date" onChange={handleChange}/>
                     <FormText className='text-muted'>
                         Choose a start date for the trip.
                     </FormText>
@@ -75,7 +72,7 @@ const EditTrip = props => {
                 
                 <FormGroup controlId="end_date">
                     <FormLabel>End Date of Trip</FormLabel>
-                    <FormControl required type="date" onChange={handleChange}/>
+                    <FormControl required value={tripInfo.end_date} type="date" onChange={handleChange}/>
                     <FormText className='text-muted'>
                         Choose an end date for the trip.
                     </FormText>
