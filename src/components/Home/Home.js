@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container'
 import TripManager from "../../modules/TripManager"
 import TravelerTripManager from "../../modules/TravelerTripManager"
 import TripHome from "../Trip/TripHome"
+import JoinTripInfo from "../Trip/JoinTripInfo"
 import YourTripHome from "../Trip/YourTripHome"
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
@@ -15,6 +16,7 @@ const Home = (props) => {
 
     const [currentTrips, setCurrentTrips] = useState([])
     const [yourTrips , setYourTrips] = useState([])
+    const [travelerTripsToJoin, setTravelerTripsToJoin] = useState([])
     const [newTripJoinInfo, setNewTripJoinInfo] = useState({created_trip: false, trip_id: 0})
 
 
@@ -24,6 +26,14 @@ const Home = (props) => {
         setNewTripJoinInfo(stateToChange)
         TravelerTripManager.createNewTravelerTripOwner()
 
+    }
+
+    const handleJoinTrip = (tripId) => {
+        const joiningTrip = {created_trip: false, trip_id: parseInt(tripId)}
+        TravelerTripManager.createNewTravelerTripOwner(joiningTrip).then(() => {
+            TravelerTripManager.getYourTrips().then(resp => setYourTrips(resp))  
+            TripManager.getFriendsTrips().then(resp => setTravelerTripsToJoin(resp))
+        })
     }
     
 
@@ -38,6 +48,7 @@ const Home = (props) => {
     const loadTrips = () => {
         TripManager.getTripsGeneral().then(response => setCurrentTrips(response))
         TravelerTripManager.getYourTrips().then(resp => setYourTrips(resp))  
+        TripManager.getFriendsTrips().then(resp => setTravelerTripsToJoin(resp))
     }
 
     useEffect(() => {
@@ -57,17 +68,20 @@ const Home = (props) => {
                         <Link to="/createtrip"><Button>Create Trip</Button></Link>
                     </Container>
                 </Jumbotron>
-                <Container>
-                    <h2>Your Trips</h2>
-                    {yourTrips.map((eachTravelerTrip) => (
-                        <YourTripHome key={eachTravelerTrip.id} handleDeleteTrip = {handleDeleteTrip} eachTravelerTrip={eachTravelerTrip} {...props}/>
-                    ))}
-                </Container>
+                {yourTrips    
+                    ?<Container>
+                        <h2>Trips created by You</h2>
+                        {yourTrips.map((eachTravelerTrip) => (
+                            <YourTripHome key={eachTravelerTrip.id} handleDeleteTrip = {handleDeleteTrip} eachTravelerTrip={eachTravelerTrip} {...props}/>
+                        ))}
+                    </Container>
+                    :null
+                }    
                 {currentTrips
                     ?<Container>
-                        <h2>All Trips</h2>
-                        {currentTrips.map((eachTravelerTrip) => (
-                            <TripHome key={eachTravelerTrip.id} eachTravelerTrip={eachTravelerTrip} {...props}/>
+                        <h2>Join another trip</h2>
+                        {travelerTripsToJoin.map((eachTravelerTrip) => (
+                            <JoinTripInfo key={eachTravelerTrip.id} handleJoinTrip={handleJoinTrip} eachTravelerTrip={eachTravelerTrip} {...props}/>
                         ))}
                     </Container>
                     :null

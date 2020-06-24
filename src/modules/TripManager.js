@@ -55,5 +55,15 @@ export default {
             body: JSON.stringify(Trip)
         })
         .then(resp => resp.json())
-    }
+    },
+    getFriendsTrips() {
+        return fetch(`${url}/trips?friendstravelertrips`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
 }
