@@ -14,6 +14,7 @@ import AccommodationsPage from "./Accommodation/AccommodationsPage"
 import CreateActivity from "./Activity/CreateActivity"
 import EditActivity from "./Activity/EditActivity"
 import TokenAuth from "../hooks/TokenAuth"
+import EditTrip from "./Trip/EditTrip"
 
 
 const ApplicationViews = () => {
@@ -38,6 +39,10 @@ const ApplicationViews = () => {
             />
             <Route exact path="/createtrip" render={props => {
                 return <CreateTripForm isAuthenticated={TokenAuth.isAuthenticated} {...props} />
+            }}
+            />
+            <Route path="/:tripId/edittrip" render={props => {
+                return <EditTrip tripId={props.match.params.tripId} isAuthenticated={TokenAuth.isAuthenticated} {...props} />
             }}
             />
             <Route exact path="/createflight" render={props => {

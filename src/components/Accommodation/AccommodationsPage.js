@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import AccommodationInfo from "./AccommodationInfo"
 import YourAccommodationInfo from "./YourAccommodationInfo"
 import AccommodationManager from "../../modules/AccommodationManager"
+import "./AccommodationsPage.css"
 
 
 
@@ -48,19 +49,20 @@ const AccommodationsPage = (props) => {
                     </Container>
                 </Jumbotron>
             </Container>
-            <Container>
+            <Container className="everyAccommodationBox">
                 <Container>
+                    <h3>All Accommodations</h3>
                     {allAccommodations.map((eachAccommodation) => (
                         <AccommodationInfo key={eachAccommodation.id} eachAccommodation={eachAccommodation} {...props} />
                     ))
                     }
                 </Container>
                 <Container>
-                <h3>Your Accommodations</h3>
-                {yourAccommodations.map((eachAccommodation) => (
-                    <YourAccommodationInfo key={eachAccommodation.id} handleDelete={handleDelete} eachAccommodation={eachAccommodation} {...props} />
-                ))
-                }
+                    <h3>Your created Accommodations</h3>
+                    {yourAccommodations.map((eachAccommodation) => (
+                        <YourAccommodationInfo key={eachAccommodation.id} handleDelete={handleDelete} eachAccommodation={eachAccommodation} {...props} />
+                    ))
+                    }
                 </Container>
             </Container>    
         </>

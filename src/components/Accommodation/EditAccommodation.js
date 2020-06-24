@@ -72,7 +72,7 @@ const EditAccommodation = props => {
 
 
     useEffect(() => {
-        TripManager.getAllTrips().then(resp => setTripOptions(resp))
+        TripManager.getTripsJoined().then(resp => setTripOptions(resp))
         AccommodationManager.getIndividualAccommodation(props.accommodationId).then(resp => {setAccommodationInfo(resp)})
     }, [])
 

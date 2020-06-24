@@ -14,6 +14,16 @@ export default {
         })
         .then(resp => resp.json())
     },
+    getFriendsTravelerTrips() {
+        return fetch(`${url}/travelertrips?friendstravelertrips`, {
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+            }
+        })
+        .then(resp => resp.json())
+    },
     getYourTrips() {
         return fetch(`${url}/travelertrips?yourtrips`, {
             "method": "GET",
