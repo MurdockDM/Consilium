@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Row from 'react-bootstrap/Row'
 import Container from "react-bootstrap/Container"
 
@@ -7,9 +7,10 @@ import Container from "react-bootstrap/Container"
 const TripAttendingInfo = props => {
 
     
-
-    const eachTrip = props.eachTravelerTrip
     
+    const eachTrip = props.eachTravelerTrip
+
+    const [relatedTravelerTripInfo, setRelatedTravelerTripInfo] = useState({id: 0, trip_id: 0, created_trip: false })
 
     return(
         <Container>

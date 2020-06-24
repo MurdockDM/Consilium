@@ -49,6 +49,14 @@ const Home = (props) => {
         })
     }
 
+    const handleLeaveTrip = (id) => {
+        TravelerTripManager.deleteTravelerTrip(id).then(() => {
+            TravelerTripManager.getYourTrips().then(resp => setYourTrips(resp))
+            TripManager.getTripsGeneral().then(response => setCurrentTrips(response))
+            TripManager.getAllTripsAttending().then(resp => setTripsAttending(resp))
+        })
+    }
+
     const checkToken = sessionStorage.getItem("consilium_token")
 
     const loadTrips = () => {
