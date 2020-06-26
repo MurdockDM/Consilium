@@ -38,30 +38,30 @@ const Flights = (props) => {
     },[])
 
     return(
-        <>
-            <Container>
-                <Jumbotron>
+        <Container fluid className="allFlight">
+            <Container fluid>
+                <Jumbotron className="flightJumbo">
                     <Container>
-                        <h2>Flights by trip</h2>
+                        <h2 className="flightJumboHeader">Flights by trip</h2>
                         <Link to="/createflight"><Button>Add a Flight</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>
             <Container className="everyFlightBox">    
-                <Container>
+                <Container className="flightCardContainer">
                     <h4>All Flights</h4>
                     {allFlights.map((eachFlight) => {
                         return eachFlight.traveler.possible_friend &&  (<FlightInfo key={eachFlight.id} eachFlight={eachFlight} {...props} />)
                     })}
                 </Container>
-                <Container>
+                <Container className="flightCardContainer">
                     <h4>Personal Flights</h4>
                     {personalFlights.map((eachFlight) => (
                         <PersonalFlightInfo key={eachFlight.id} handleDelete={handleDelete} eachFlight={eachFlight} {...props} />
                     ))}
                 </Container>
             </Container>    
-        </>    
+        </Container>    
     )
 
 

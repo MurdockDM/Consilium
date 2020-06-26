@@ -40,32 +40,32 @@ const AccommodationsPage = (props) => {
 
     return (
 
-        <>
-            <Container>
-                <Jumbotron>
+        <Container fluid className="allAccommodation">
+            <Container fluid>
+                <Jumbotron className="accommodationJumbo">
                     <Container>
-                        <h2>Accommodations by Trip</h2>
+                        <h2 className="accommodationJumboHeader">Accommodations by Trip</h2>
                         <Link to="/createaccommodation"><Button>Add an accommodation</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>
             <Container className="everyAccommodationBox">
-                <Container>
-                    <h3>All Accommodations</h3>
+                <Container className="accommodationCardContainer">
+                    <h4>All Accommodations</h4>
                     {allAccommodations.map((eachAccommodation) => (
                         <AccommodationInfo key={eachAccommodation.id} eachAccommodation={eachAccommodation} {...props} />
                     ))
                     }
                 </Container>
-                <Container>
-                    <h3>Your created Accommodations</h3>
+                <Container className="accommodationCardContainer">
+                    <h4>Your created Accommodations</h4>
                     {yourAccommodations.map((eachAccommodation) => (
                         <YourAccommodationInfo key={eachAccommodation.id} handleDelete={handleDelete} eachAccommodation={eachAccommodation} {...props} />
                     ))
                     }
                 </Container>
             </Container>    
-        </>
+        </Container>
     )
 
 

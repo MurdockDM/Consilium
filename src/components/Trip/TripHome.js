@@ -2,6 +2,7 @@ import React from "react"
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import Container from "react-bootstrap/Container"
+import Card from 'react-bootstrap/Card'
 
 
 const TripHome = props => {
@@ -14,8 +15,12 @@ const TripHome = props => {
 
     return(
         <Container>
+            <Card>
+                <Card.Header as="h4">
+                {eachTrip.city} Trip
+                </Card.Header>
+            </Card>
             <Row>
-                <h2>{eachTrip.city} Trip</h2>
             </Row>
             <Row>
                 <h5>Dates: {eachTrip.start_date}  through  {eachTrip.end_date}</h5>

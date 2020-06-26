@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import Card from "react-bootstrap/Card";
 
 const PersonalFlightInfo = props => {
 
@@ -18,24 +19,21 @@ const PersonalFlightInfo = props => {
     },[])
     
     return (
-
-            <Container>
-                <Row>
-                    <h3>{eachFlight.trip.city} Trip  {eachFlight.trip.start_date}</h3>
-                </Row>
-                <Row>
-                    <p>Airport: {eachFlight.destination_airport}</p>
-                </Row>
-                <Row>
-                    <p>Arrival Time: {eachFlight.arrival_time}</p>
-                </Row>
+            <Card className="infoCard">
+                <Card.Header as="h4" className="cardHeader">
+                    {eachFlight.trip.city} Trip  {eachFlight.trip.start_date}
+                </Card.Header>
+                <Card.Body>
+                    <Card.Text>Airport: {eachFlight.destination_airport}</Card.Text>
+                    <Card.Text>Arrival Time: {eachFlight.arrival_time}</Card.Text>
                 <Button onClick={() => handleEdit(flightId)} variant="primary">
                     Edit Flight
                 </Button>
                 <Button onClick={() => props.handleDelete(flightId)} variant="danger">
                     Delete Flight
                 </Button>
-            </Container>
+                </Card.Body>
+            </Card>
     )
 
 
