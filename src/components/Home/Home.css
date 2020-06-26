@@ -6,7 +6,7 @@ h3,
 h4,
 h5,
 h5{
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
 
 p{
@@ -14,13 +14,13 @@ p{
 }
 
 .allHome{
-    background-color: #E1E1E1
+    background-color: #2F3E46;
 }
 
 .allTripsBox {
     display: flex;
     flex-direction: row;
-    background-color: #E1E1E1;
+    background-color: #2F3E46;
 }
 
 .homeJumbo{
@@ -30,7 +30,7 @@ p{
 }
 
 .homeJumboHeader{
-    color: #F7F7F7;
+    color: #CAD2C5;
 }
 
 .infoCard {
@@ -40,7 +40,8 @@ p{
 }
 
 .cardHeader {
-    background: linear-gradient(275deg, #207227 10%, #3F9142 40%);
+    background-color: #2F3E46;
+    color: #CAD2C5
 }
 
 .cardBody {
@@ -55,6 +56,7 @@ p{
     border: 2px solid #05400A;
     border-radius: 0.5rem;
     margin: 2rem;
+    background-color: #CAD2C5;
 }
 
 .homeCardContainer > h3 {

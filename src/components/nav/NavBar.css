@@ -1,4 +1,16 @@
 
+.allNav{
+    background-color: #CAD2C5;
+}
+
 .coloredNav {
-    color: #0E5814;
+    color: #2F3E46;
+}
+
+.navUl {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
 }

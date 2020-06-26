@@ -15,7 +15,7 @@ p{
 }
 
 .allFlight{
-    background-color: #E1E1E1
+    background: linear-gradient(360deg, #55A865 40%, #A1D3AC 80%)
 }
 
 .everyFlightBox {

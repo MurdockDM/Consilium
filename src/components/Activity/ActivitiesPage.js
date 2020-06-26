@@ -45,7 +45,7 @@ const ActivitiesPage = props => {
 
     return(
         <Container fluid className="allActivity">
-            <Container>
+            <Container fluid>
                 <Jumbotron className="activityJumbo">
                     <Container>
                         <h2 className="activityJumboHeader">Activities by Trip</h2>

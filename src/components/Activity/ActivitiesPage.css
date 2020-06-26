@@ -34,7 +34,7 @@ p{
 .activityJumbo{
     background-image: url(../../images/activity.jpg);
     background-size: cover;
-    background-position-y: 25rem;
+    background-position-y: center;
 }
 
 .activityJumboHeader{
