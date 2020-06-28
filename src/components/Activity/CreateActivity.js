@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button'
 import TripDropdownOptions from '../Trip/TripDropdownOptions'
 import ActivityManager from "../../modules/ActivityManager"
 import TripManager from "../../modules/TripManager"
+import "./CreateActivity.css"
 
 
 const CreateActivity = (props) => {
@@ -39,7 +40,7 @@ const CreateActivity = (props) => {
     },[])
 
     return(
-    <Container>
+    <Container className="createActivityForm">
         <Jumbotron>
             <Container>
                 <h2>Create an Activity</h2>

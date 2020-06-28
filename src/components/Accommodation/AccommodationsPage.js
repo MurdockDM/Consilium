@@ -41,11 +41,19 @@ const AccommodationsPage = (props) => {
     return (
 
         <Container fluid className="allAccommodation">
+            <style type="text/css">
+                {`
+            .btn-flat {
+            background-color: #724BB7;
+            color: #F7F7F7;
+            }
+            `}
+            </style>
             <Container fluid>
                 <Jumbotron className="accommodationJumbo">
                     <Container>
                         <h2 className="accommodationJumboHeader">Accommodations by Trip</h2>
-                        <Link to="/createaccommodation"><Button>Add an accommodation</Button></Link>
+                        <Link to="/createaccommodation"><Button variant="flat">Add an accommodation</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>

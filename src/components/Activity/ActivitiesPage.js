@@ -45,11 +45,19 @@ const ActivitiesPage = props => {
 
     return(
         <Container fluid className="allActivity">
+            <style type="text/css">
+                {`
+            .btn-flat {
+            background-color: #724BB7;
+            color: #F7F7F7;
+            }
+            `}
+            </style>
             <Container fluid>
                 <Jumbotron className="activityJumbo">
                     <Container>
                         <h2 className="activityJumboHeader">Activities by Trip</h2>
-                        <Link to="/createactivity"><Button>Add an Activity</Button></Link>
+                        <Link to="/createactivity"><Button variant="flat">Add an Activity</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>

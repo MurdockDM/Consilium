@@ -16,24 +16,32 @@ const PersonalFlightInfo = props => {
 
     useEffect(() => {
         setFlightId(props.eachFlight.id)
-    },[])
-    
+    }, [])
+
     return (
-            <Card className="infoCard">
-                <Card.Header as="h4" className="cardHeader">
-                    {eachFlight.trip.city} Trip  {eachFlight.trip.start_date}
-                </Card.Header>
-                <Card.Body>
-                    <Card.Text>Airport: {eachFlight.destination_airport}</Card.Text>
-                    <Card.Text>Arrival Time: {eachFlight.arrival_time}</Card.Text>
-                <Button onClick={() => handleEdit(flightId)} variant="primary">
+        <Card className="infoCard">
+            <style type="text/css">
+                {`
+            .btn-flat {
+                background-color: #724BB7;
+                color: #F7F7F7;
+                margin-right: 0.5rem}
+            `}
+            </style>
+            <Card.Header as="h4" className="cardHeader">
+                {eachFlight.trip.city} Trip  {eachFlight.trip.start_date}
+            </Card.Header>
+            <Card.Body>
+                <Card.Text>Airport: {eachFlight.destination_airport}</Card.Text>
+                <Card.Text>Arrival Time: {eachFlight.arrival_time}</Card.Text>
+                <Button onClick={() => handleEdit(flightId)} variant="flat">
                     Edit Flight
                 </Button>
                 <Button onClick={() => props.handleDelete(flightId)} variant="danger">
                     Delete Flight
                 </Button>
-                </Card.Body>
-            </Card>
+            </Card.Body>
+        </Card>
     )
 
 

@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
 import TripManager from '../../modules/TripManager'
+import "./CreateTripForm.css"
 import TravelerTripManager from '../../modules/TravelerTripManager'
 
 
@@ -24,10 +25,7 @@ const CreateTripForm = props => {
         }).then(() => props.history.push("/"))
     }
 
-    // const setTravelerTripInfo = () => {
-    //     const stateToChange = {...ownerTravelerTrip}
-    //     stateToChange.trip_id = createdId.id
-    // }
+
 
     const handleChange = evt => {
         const stateToChange = {...tripInfo}
@@ -35,19 +33,10 @@ const CreateTripForm = props => {
         setTripInfo(stateToChange)
     }
 
-    // useEffect(() => {
-    //     if (createdId.id !== 0) {
-    //     setTravelerTripInfo()}
-    // },[createdId])
-
-    // useEffect(() => {
-        
-    //         TravelerTripManager.createNewTravelerTripOwner(ownerTravelerTrip)
-    // },[ownerTravelerTrip])
 
     return(
         
-        <Container>
+        <Container className="createTripForm">
             <Jumbotron>
                 <Container>
                     <h2>Create a Trip</h2>

@@ -1,6 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import NavBar from "./nav/NavBar"
+
+import "./Consilium.css"
 import ApplicationViews from "./ApplicationViews"
 
 const Consilium = () => {

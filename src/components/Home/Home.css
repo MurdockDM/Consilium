@@ -40,8 +40,9 @@ p{
 }
 
 .cardHeader {
-    background-color: #2F3E46;
-    color: #CAD2C5
+    background: linear-gradient(275deg, #207227 10%, #3F9142 40%);
+    color: #CAD2C5;
+    font-family: 'Karla', sans-serif;
 }
 
 .cardBody {
@@ -57,11 +58,17 @@ p{
     border-radius: 0.5rem;
     margin: 2rem;
     background-color: #CAD2C5;
+    
 }
 
 .homeCardContainer > h3 {
     display: flex;
     justify-content: center;
+    color: #354F52;
+}
+
+.loginRequiredText {
+    color: #CAD2C5;
 }
 
 @media only screen and (max-width: 600px) {

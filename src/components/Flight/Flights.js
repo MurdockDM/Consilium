@@ -39,11 +39,19 @@ const Flights = (props) => {
 
     return(
         <Container fluid className="allFlight">
+            <style type="text/css">
+                {`
+            .btn-flat {
+            background-color: #724BB7;
+            color: #F7F7F7;
+            }
+            `}
+            </style>
             <Container fluid>
                 <Jumbotron className="flightJumbo">
                     <Container>
                         <h2 className="flightJumboHeader">Flights by trip</h2>
-                        <Link to="/createflight"><Button>Add a Flight</Button></Link>
+                        <Link to="/createflight"><Button variant="flat">Add a Flight</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>

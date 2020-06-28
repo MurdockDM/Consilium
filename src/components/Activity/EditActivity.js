@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button'
 import TripDropdownOptions from '../Trip/TripDropdownOptions'
 import ActivityManager from "../../modules/ActivityManager"
 import TripManager from "../../modules/TripManager"
+import "./EditActivity.css"
 
 
 const EditActivity = (props) => {
@@ -40,7 +41,7 @@ const EditActivity = (props) => {
     },[])
 
     return(
-    <Container>
+    <Container className="editActivityForm">
         <Jumbotron>
             <Container>
                 <h2>Edit an Activity</h2>

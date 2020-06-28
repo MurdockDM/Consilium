@@ -121,7 +121,7 @@ const Home = (props) => {
                             }
                         </Container>
                     </>
-                    : <h2>Please log in to view this page</h2>
+                    : <h2 className="loginRequiredText">Please log in to view this page</h2>
             }
         </Container>
     )

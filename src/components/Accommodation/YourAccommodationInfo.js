@@ -19,6 +19,14 @@ const YourAccommodationInfo = props => {
     
     return (
             <Card className="infoCard">
+                <style type="text/css">
+                {`
+            .btn-flat {
+                background-color: #724BB7;
+                color: #F7F7F7;
+                margin-right: 0.5rem}
+            `}
+            </style>
                 <Card.Header as="h4" className="cardHeader">
                 {eachAccommodation.trip.city} Trip  {eachAccommodation.trip.start_date}
                 </Card.Header>
@@ -36,7 +44,7 @@ const YourAccommodationInfo = props => {
                     ?<Card.Text>Room: {eachAccommodation.room.room_number}</Card.Text>
                     :<Card.Text>No room or unit information</Card.Text>
                 }
-                <Button onClick={() => handleEdit(accommodationIdentifier)}>Edit Activity</Button>
+                <Button variant="flat" onClick={() => handleEdit(accommodationIdentifier)}>Edit Activity</Button>
                 <Button onClick={() => props.handleDelete(eachAccommodation.id)} variant="danger">Delete Activity</Button>
                 </Card.Body>
             </Card>
