@@ -2,6 +2,8 @@ import React from "react"
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import Container from "react-bootstrap/Container"
+import Card from 'react-bootstrap/Card'
+import "../Home/Home.css"
 import TravelerTripManager from "../../modules/TravelerTripManager"
 
 
@@ -13,33 +15,33 @@ const JoinTripInfo = props => {
     
 
     return(
-        <Container>
-            <Row>
-                <h2>{eachTrip.city} Trip</h2>
-            </Row>
-            <Row>
-                <h5>Dates: {eachTrip.start_date}  through  {eachTrip.end_date}</h5>
-            </Row>
-            <Row>
-                <h5> </h5>
-            </Row>
-            <Row>
-            <p>Trip attendees:</p>
-            </Row>
-            {eachTrip.traveler_on_trip.map((tripper, index) => {
-                return(
-                    <Row key={index}> 
-                    <p>{tripper.user.first_name} {tripper.user.last_name}</p>
-                    </Row>    
-            )})
+        <Card className="infoCard">
+            <style type="text/css">
+                {`
+            .btn-flat {
+            background-color: #724BB7;
+            color: #F7F7F7;
             }
-            <Row>
-                <Button onClick={() => props.handleJoinTrip(eachTrip.id)}>
+            `}
+            </style>
+            <Card.Header as="h4" className="cardHeader">
+                {eachTrip.city} Trip
+            </Card.Header>
+            <Card.Body className="cardBody">
+                <Card.Text>
+                    Dates: {eachTrip.start_date}  through  {eachTrip.end_date}
+                </Card.Text>
+                <Card.Text>
+                Trip attendees:
+                </Card.Text>
+                {eachTrip.traveler_on_trip.map((tripper, index) => {
+                    return <Card.Text key={index}>{tripper.user.first_name} {tripper.user.last_name}</Card.Text>  
+                })}
+                <Button variant="flat" onClick={() => props.handleJoinTrip(eachTrip.id)}>
                     Join this trip
                 </Button>
-            </Row>
-
-        </Container>    
+            </Card.Body>
+        </Card>     
     )
 }
 

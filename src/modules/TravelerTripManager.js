@@ -42,6 +42,14 @@ export default {
         }})
 
     },
+    deleteTravelerTrip(id) {
+        return fetch(`${url}/travelertrips/${id}`, {
+            "method": "DELETE",
+            "headers": {
+                "Authorization": `Token ${sessionStorage.getItem('consilium_token')}`
+        }})
+
+    },
     createNewTravelerTripOwner(TravelerTrip) {
         return fetch(`${url}/travelertrips`, {
             "method": "POST",

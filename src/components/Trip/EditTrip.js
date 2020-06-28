@@ -7,6 +7,7 @@ import FormLabel from 'react-bootstrap/FormLabel'
 import Container from 'react-bootstrap/Container'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
+import "./EditTrip.css"
 import TripManager from '../../modules/TripManager'
 import TravelerTripManager from '../../modules/TravelerTripManager'
 
@@ -34,7 +35,7 @@ const EditTrip = props => {
 
     return(
         
-        <Container>
+        <Container className="editTripForm">
             <Jumbotron>
                 <Container>
                     <h2>Edit the {tripInfo.city} Trip</h2>

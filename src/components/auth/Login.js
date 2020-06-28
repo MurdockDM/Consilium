@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 import TokenAuth from "../../hooks/TokenAuth"
+import Container from 'react-bootstrap/Container'
+import "./Login.css"
 
 const Login = props => {
     const username = useRef()
@@ -28,7 +30,7 @@ const Login = props => {
     }
 
     return (
-        <main style={{textAlign:"center"}}>
+        <Container fluid style={{textAlign:"center"}} className="mainLogin">
             <form className="form--login" onSubmit={handleLogin}>
                 <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <fieldset>
@@ -52,7 +54,7 @@ const Login = props => {
                     </button>
                 </fieldset>
             </form>
-        </main>
+        </Container>
     )
 }
 export default Login

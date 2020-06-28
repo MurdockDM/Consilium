@@ -1,0 +1,22 @@
+
+.allNav{
+    background-color: #2F3E46;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.coloredNav {
+    color: #CAD2C5;
+    background-color: #2F3E46;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.navUl {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}

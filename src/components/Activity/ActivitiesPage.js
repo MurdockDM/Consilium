@@ -44,26 +44,34 @@ const ActivitiesPage = props => {
     },[])
 
     return(
-        <>
-            <Container>
-                <Jumbotron>
+        <Container fluid className="allActivity">
+            <style type="text/css">
+                {`
+            .btn-flat {
+            background-color: #724BB7;
+            color: #F7F7F7;
+            }
+            `}
+            </style>
+            <Container fluid>
+                <Jumbotron className="activityJumbo">
                     <Container>
-                        <h2>Activities by Trip</h2>
-                        <Link to="/createactivity"><Button>Add an Activity</Button></Link>
+                        <h2 className="activityJumboHeader">Activities by Trip</h2>
+                        <Link to="/createactivity"><Button variant="flat">Add an Activity</Button></Link>
                     </Container>
                 </Jumbotron>
             </Container>
             <Container className="everyActivityBox">
-                <Container>
-                    <h3>All Activities</h3>
+                <Container className="activityCardContainer">
+                    <h4>All Activities</h4>
                     {allActivities.map((eachActivity) => (
                         <ActivityInfo key={eachActivity.id} eachActivity={eachActivity} {...props} />
                     ))
 
                     }
                 </Container>
-                <Container>
-                    <h3>Your created Activities</h3>
+                <Container className="activityCardContainer">
+                    <h4>Your created Activities</h4>
                     {yourActivities.map((eachActivity) => (
                         <YourActivityInfo key={eachActivity.id} handleDelete={handleDelete} eachActivity={eachActivity} {...props} />
                     ))
@@ -71,7 +79,7 @@ const ActivitiesPage = props => {
                     }
                 </Container>
             </Container>    
-        </>
+        </Container>
 
     )
 

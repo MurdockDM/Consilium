@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button'
 import FlightManager from '../../modules/FlightManager'
 import TripDropdownOptions from '../Trip/TripDropdownOptions'
 import TripManager from '../../modules/TripManager'
+import "./CreateFlight.css"
 
 
 
@@ -43,7 +44,7 @@ const CreateFlight = props => {
 
     return(
         
-        <Container>
+        <Container className="createFlightForm">
             <Jumbotron>
                 <Container>
                     <h2>Create a Flight</h2>

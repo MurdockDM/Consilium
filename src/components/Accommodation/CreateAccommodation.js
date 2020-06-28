@@ -13,6 +13,7 @@ import AccommodationManager from '../../modules/AccommodationManager'
 import TripDropdownOptions from '../Trip/TripDropdownOptions'
 import TripManager from '../../modules/TripManager'
 import RoomManager from "../../modules/RoomManager";
+import "./CreateAccommodation.css"
 
 
 
@@ -77,7 +78,7 @@ const CreateAccommodation = props => {
 
     return (
 
-        <Container>
+        <Container className="createAccommodationForm">
             <Jumbotron>
                 <Container>
                     <h2>Create a Accommodation</h2>
